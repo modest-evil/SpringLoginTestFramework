@@ -9,19 +9,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import HelperFiles.LoginPage;
 
-
-
 public class SpringLoginTest {
 	
 	static final String BROWSER_DRIVER = "webdriver.gecko.driver";
 	static final String DRIVER_PATH = "C:\\Users\\Modest Evil\\Downloads\\geckodriver-v0.19.1-win64\\geckodriver.exe";
 	
 	static final String WORKING_URL = "http://localhost:8080/spring-security-mvc-login/login.html";
-	
-	static final String TEXTBOX_FOR_USENAME = "username";
-	static final String TEXTBOX_FOR_PASSWORD = "password";
-	static final String SUBMIT_BUTTON = "submit";
-	static final String PAGE_BODY = "body";
 	
 	@BeforeClass
 	public static void beforeClass()
