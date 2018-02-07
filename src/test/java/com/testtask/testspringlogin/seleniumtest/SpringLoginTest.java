@@ -1,4 +1,4 @@
-package SeleniumTests;
+package com.testtask.testspringlogin.seleniumtest;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import HelperFiles.LoginPage;
+import com.testtask.testspringlogin.helper.LoginPage;
 
 public class SpringLoginTest {
 	

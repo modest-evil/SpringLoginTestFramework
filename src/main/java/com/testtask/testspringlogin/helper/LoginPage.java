@@ -1,4 +1,4 @@
-package HelperFiles;
+package com.testtask.testspringlogin.helper;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
