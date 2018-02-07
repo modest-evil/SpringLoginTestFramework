@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import HelperFiles.LoginPage;
+
 
 
 public class SpringLoginTest {
@@ -39,31 +41,24 @@ public class SpringLoginTest {
 	 * what means that user is logged in as trivial user 
 	 */
 	public void successfulUserLoginTest()
-	{
+	{	
 		String userToLogIn = "user1";
 		String userPasswordToLogIn = "user1Pass";
 		String textForUser = "This text is only visible to a user";
 		
-		WebDriver driver = new FirefoxDriver();
-		driver.get(WORKING_URL);
-		driver.manage().window().maximize();
+        WebDriver driver = new FirefoxDriver();
 		
-		WebElement username = driver.findElement(By.name(TEXTBOX_FOR_USENAME));
-		username.clear();
-		username.sendKeys(userToLogIn);
+		LoginPage SpringLogin = new LoginPage(driver);
 		
-		WebElement password = driver.findElement(By.name(TEXTBOX_FOR_PASSWORD));
-		password.clear();
-		password.sendKeys(userPasswordToLogIn);
+		SpringLogin.open(WORKING_URL);
+		SpringLogin.setupWindow();
+		SpringLogin.typeUsername(userToLogIn);
+		SpringLogin.typePassword(userPasswordToLogIn);
+		SpringLogin.submitLogin();
 		
-		WebElement button = driver.findElement(By.name(SUBMIT_BUTTON));
-		button.click();
-			
-		WebElement pageBody = driver.findElement(By.tagName(PAGE_BODY));
-		String bodyText = pageBody.getText();
-		assertTrue(bodyText.contains(textForUser));
+		assertTrue(SpringLogin.pageText().contains(textForUser));
 
-        driver.quit();
+        SpringLogin.close();
 
 	}
 	
@@ -77,27 +72,21 @@ public class SpringLoginTest {
 		String userToLogIn = "admin";
 		String userPasswordToLogIn = "adminPass";
 		String textForAdmin = "This text is only visible to an admin";
-		
-		WebDriver driver = new FirefoxDriver();
-		driver.get(WORKING_URL);
-		driver.manage().window().maximize();
-		
-		WebElement username = driver.findElement(By.name(TEXTBOX_FOR_USENAME));
-		username.clear();
-		username.sendKeys(userToLogIn);
-		
-		WebElement password = driver.findElement(By.name(TEXTBOX_FOR_PASSWORD));
-		password.clear();
-		password.sendKeys(userPasswordToLogIn);
-		
-		WebElement button = driver.findElement(By.name(SUBMIT_BUTTON));
-		button.click();
 			
-		WebElement pageBody = driver.findElement(By.tagName(PAGE_BODY));
-		String bodyText = pageBody.getText();
-		assertTrue(bodyText.contains(textForAdmin));
+		WebDriver driver = new FirefoxDriver();
+		
+		LoginPage SpringLogin = new LoginPage(driver);
+		
+		SpringLogin.open(WORKING_URL);
+		SpringLogin.setupWindow();
+		SpringLogin.typeUsername(userToLogIn);
+		SpringLogin.typePassword(userPasswordToLogIn);
+		SpringLogin.submitLogin();
+		
+		assertTrue(SpringLogin.pageText().contains(textForAdmin));
 
-        driver.quit();
+        SpringLogin.close();
+	
 	}
 	
 	@Test
@@ -122,26 +111,19 @@ public class SpringLoginTest {
 		String startPageText = "Login";
 		
 		WebDriver driver = new FirefoxDriver();
-		driver.get(WORKING_URL);
-		driver.manage().window().maximize();
 		
-		WebElement username = driver.findElement(By.name(TEXTBOX_FOR_USENAME));
-		username.clear();
-		username.sendKeys(userToLogIn);
+		LoginPage SpringLogin = new LoginPage(driver);
 		
-		WebElement password = driver.findElement(By.name(TEXTBOX_FOR_PASSWORD));
-		password.clear();
-		password.sendKeys(userPasswordToLogIn);
+		SpringLogin.open(WORKING_URL);
+		SpringLogin.setupWindow();
+		SpringLogin.typeUsername(userToLogIn);
+		SpringLogin.typePassword(userPasswordToLogIn);
+		SpringLogin.submitLogin();
 		
-		WebElement button = driver.findElement(By.name(SUBMIT_BUTTON));
-		button.click();
-			
-		WebElement pageBody = driver.findElement(By.tagName(PAGE_BODY));
-		String bodyText = pageBody.getText();
-		assertTrue(bodyText.contains(startPageText));
+		assertTrue(SpringLogin.pageText().contains(startPageText));
 
-        driver.quit();
+        SpringLogin.close();
+		
 	}
-	
 
 }
